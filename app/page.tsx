@@ -3,7 +3,7 @@ import { CategoryScroll } from '../components/CategoryScroll';
 import { RakshaBanner } from '../components/RakshaBanner';
 import ProductGrid from '../components/ProductGrid';
 import ProductScrollRow from '../components/ProductScrollRow';
-import { Features } from '../components/Features';
+import Features  from '../components/Features';
 import { products } from '../data/products';
 
 export default function Home() {
