@@ -2,7 +2,8 @@ import { Hero } from '../components/Hero';
 import { CategoryScroll } from '../components/CategoryScroll';
 import { RakshaBanner } from '../components/RakshaBanner';
 import ProductGrid from '../components/ProductGrid';
-import ProductScrollRow from '../components/ProductScrollRow'; // ✅ Import this
+import ProductScrollRow from '../components/ProductScrollRow';
+import Features from '../components/Features';
 import { products } from '../data/products';
 
 export default function Home() {
@@ -11,8 +12,9 @@ export default function Home() {
       <Hero />
       <CategoryScroll />
       <RakshaBanner />
-      <ProductScrollRow /> {/* ✅ Horizontal scrollable section */}
       <ProductGrid products={products} />
+       <ProductScrollRow />
+      <Features />
     </main>
   );
 }
