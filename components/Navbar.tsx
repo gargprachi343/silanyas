@@ -1,12 +1,12 @@
-import { Heart, Search, ShoppingCart, User, Store } from 'lucide-react';
+import { Heart, Search, ShoppingCart, User } from 'lucide-react';
 
 const Navbar = () => {
   return (
     <div className="sticky top-0 z-50">
       {/* Top banner */}
-      <div className="w-full bg-amber-50 text-sm text-center py-2 text-gray-700">
-        Buy 2 get 10% off – CODE: <span className="font-semibold">RAKHI10</span>
-      </div>
+      <div className="w-full bg-blue-950 p-2 text-white text-center">
+  Buy 2 get 10% off – CODE: <span className="font-bold text-blue-200">RAKHI10</span>
+</div>
       {/* Main navbar */}
       <nav className="w-full bg-white border-b px-4 py-3 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
         <div className="flex flex-col lg:flex-row lg:items-center gap-4 w-full">
@@ -24,7 +24,7 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center justify-end gap-6 text-xs text-black">
-          <div className="flex items-center gap-1 cursor-pointer"><Store className="w-5 h-5" /> STORES</div>
+
           <div className="flex items-center gap-1 cursor-pointer"><User className="w-5 h-5" /> ACCOUNT</div>
           <div className="flex items-center gap-1 cursor-pointer"><Heart className="w-5 h-5" /> WISHLIST</div>
           <div className="flex items-center gap-1 cursor-pointer"><ShoppingCart className="w-5 h-5" /> CART</div>

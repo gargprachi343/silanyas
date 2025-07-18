@@ -1,9 +1,37 @@
-export const Hero = () => (
-  <section className="text-center bg-gray-100 py-16 px-6">
-    <h1 className="text-4xl font-bold mb-4">Silanyas Silver</h1>
-    <p className="text-lg text-gray-700">
-      Timeless silver jewelry, crafted for elegance and simplicity.
-    </p>
-  </section>
-);
+'use client';
+
+import { useEffect, useState } from 'react';
+
+const images = [
+  '/assets/hero1.png',
+  '/assets/hero2.png',
+  '/assets/hero3.png',
+];
+
+export const Hero = () => {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, 4000); // 4 seconds per slide
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <section
+      className="relative rounded-2xl overflow-hidden py-40 px-12 flex items-center justify-center text-white text-center"
+      style={{
+        backgroundImage: `url(${images[current]})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        transition: 'background-image 0.5s ease-in-out',
+      }}
+    >
+    </section>
+  );
+};
+
+
 

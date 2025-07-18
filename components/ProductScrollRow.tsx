@@ -1,6 +1,8 @@
-// data/products.ts
+'use client';
+import ProductCard from './ProductCard';
+import { Product } from './ProductGrid';
 
-export const products = [
+const products: Product[] = [
   {
     id: '1',
     name: 'Elegant Silver Ring',
@@ -44,3 +46,24 @@ export const products = [
     imageUrl: '/assets/earrings3.jpg',
   },
 ];
+
+const ProductScrollRow = () => {
+  return (
+    <section className="py-12 px-4">
+  <h2 className="text-4xl font-bold mb-6 text-center">Our Collection</h2>
+  <div className="flex gap-6 overflow-x-auto scrollbar-hide flex-nowrap">
+    {products.map((product) => (
+      <div
+        key={product.id}
+        className="min-w-[400px] max-w-[400px] flex-shrink-0"
+      >
+        <ProductCard product={product} />
+      </div>
+    ))}
+  </div>
+</section>
+
+  );
+};
+
+export default ProductScrollRow;
