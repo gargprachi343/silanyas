@@ -1,6 +1,7 @@
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { CartProvider } from '@/context/CartContext';
 
 export const metadata = {
  title: 'Silanyas',
@@ -18,9 +19,11 @@ export default function RootLayout({
         {/* Custom fonts are now loaded in pages/_document.tsx */}
       </head>
       <body className=" bg-white text-gray-900 font-sans">
-        <Navbar />
-        <main className="min-h-screen px-4 sm:px-8">{children}</main>
-        <Footer />
+        <CartProvider>
+          <Navbar />
+          <main className="min-h-screen px-4 sm:px-8">{children}</main>
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );
