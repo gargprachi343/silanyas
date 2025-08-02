@@ -1,4 +1,5 @@
 import { FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import Link from 'next/link';
 
 const Footer = () => (
 
@@ -18,7 +19,9 @@ const Footer = () => (
       <div>
         <h3 className="text-blue-200 font-semibold mb-2">ABOUT US</h3>
         <ul className="space-y-1 text-sm text-gray-300">
-          <li><a href="#">About</a></li>
+          <li>
+  <Link href="/about-us">About</Link>
+</li>
           <li><a href="#">Team</a></li>
           <li><a href="#">Careers</a></li>
           <li><a href="#">Press Kit</a></li>
