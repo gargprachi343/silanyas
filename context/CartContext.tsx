@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from "react";
 
 interface Product {
   id: string;
@@ -25,47 +25,53 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<Product[]>([]);
   const [wishlist, setWishlist] = useState<Product[]>([]);
 
+  // Add to Cart
   const addToCart = (product: Product) => {
-    setCart(prev => {
-      const exists = prev.find(item => item.id === product.id);
+    setCart((prev) => {
+      const exists = prev.find((item) => item.id === product.id);
       if (exists) {
-        alert('Product already in cart!');
+        alert("Product already in cart!");
         return prev;
       }
-      alert('Added to cart!');
+      alert("Added to cart!");
       return [...prev, product];
     });
   };
 
+  // Add to Wishlist
   const addToWishlist = (product: Product) => {
-    setWishlist(prev => {
-      const exists = prev.find(item => item.id === product.id);
+    setWishlist((prev) => {
+      const exists = prev.find((item) => item.id === product.id);
       if (exists) {
-        alert('Product already in wishlist!');
+        alert("Product already in wishlist!");
         return prev;
       }
-      alert('Added to wishlist!');
+      alert("Added to wishlist!");
       return [...prev, product];
     });
   };
 
+  // Remove from Cart
   const removeFromCart = (productId: string) => {
-    setCart(prev => prev.filter(item => item.id !== productId));
+    setCart((prev) => prev.filter((item) => item.id !== productId));
   };
 
+  // Remove from Wishlist
   const removeFromWishlist = (productId: string) => {
-    setWishlist(prev => prev.filter(item => item.id !== productId));
+    setWishlist((prev) => prev.filter((item) => item.id !== productId));
   };
 
   return (
-    <CartContext.Provider value={{
-      cart,
-      wishlist,
-      addToCart,
-      addToWishlist,
-      removeFromCart,
-      removeFromWishlist
-    }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        wishlist,
+        addToCart,
+        addToWishlist,
+        removeFromCart,
+        removeFromWishlist,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
@@ -73,8 +79,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
 export const useCart = () => {
   const context = useContext(CartContext);
-  if (context === undefined) {
-    throw new Error('useCart must be used within a CartProvider');
+  if (!context) {
+    throw new Error("useCart must be used within a CartProvider");
   }
   return context;
 };
