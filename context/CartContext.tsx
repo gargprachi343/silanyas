@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
 interface Product {
   id: string;
@@ -24,6 +24,23 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<Product[]>([]);
   const [wishlist, setWishlist] = useState<Product[]>([]);
+
+  // Load cart and wishlist from localStorage on mount
+  useEffect(() => {
+    const storedCart = localStorage.getItem("cart");
+    const storedWishlist = localStorage.getItem("wishlist");
+    if (storedCart) setCart(JSON.parse(storedCart));
+    if (storedWishlist) setWishlist(JSON.parse(storedWishlist));
+  }, []);
+
+  // Save cart and wishlist to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  useEffect(() => {
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  }, [wishlist]);
 
   // Add to Cart
   const addToCart = (product: Product) => {

@@ -34,22 +34,22 @@ const Navbar = () => {
           <div className="flex items-center gap-1 cursor-pointer">
             <User className="w-5 h-5" /> ACCOUNT
           </div>
-          <div className="flex items-center gap-1 cursor-pointer">
+          <a href="/wishlist" className="flex items-center gap-1 cursor-pointer">
             <Heart className="w-5 h-5" /> WISHLIST
             {wishlist.length > 0 && (
               <span className="ml-1 bg-pink-500 text-white rounded-full px-2 text-xs font-bold">
                 {wishlist.length}
               </span>
             )}
-          </div>
-          <div className="flex items-center gap-1 cursor-pointer">
+          </a>
+          <a href="/cart" className="flex items-center gap-1 cursor-pointer">
             <ShoppingCart className="w-5 h-5" /> CART
             {cart.length > 0 && (
               <span className="ml-1 bg-orange-500 text-white rounded-full px-2 text-xs font-bold">
                 {cart.length}
               </span>
             )}
-          </div>
+          </a>
         </div>
       </nav>
 
