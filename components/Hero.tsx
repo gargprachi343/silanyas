@@ -21,10 +21,10 @@ export const Hero = () => {
 
   return (
     <section
-      className="relative rounded-2xl overflow-hidden py-40 px-12 flex items-center justify-center text-white text-center"
+      className="relative rounded-2xl overflow-hidden py-52 px-16 flex items-center justify-center text-white text-center"
       style={{
         backgroundImage: `url(${images[current]})`,
-        backgroundSize: 'cover',
+        backgroundSize: 'contain',
         backgroundPosition: 'center',
         transition: 'background-image 0.5s ease-in-out',
       }}

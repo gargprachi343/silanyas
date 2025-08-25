@@ -1,41 +1,32 @@
-import { products } from "@/data/products";
+"use client";
+
+import { useParams } from "next/navigation";
 import ProductCard from "@/components/ProductCard";
+import { products } from "@/data/products";
 
-interface CategoryPageProps {
-  params: {
-    slug: string;
-  };
-}
+export default function CategoryPage() {
+  // ✅ Tell TS that slug is a string
+  const { slug } = useParams<{ slug: string }>();
 
-export default function CategoryPage({ params }: CategoryPageProps) {
-  const { slug } = params;
+  // In some setups slug can be temporarily undefined; normalize to ""
+  const normalized = (slug ?? "").toLowerCase();
 
-  // Normalize slug (make sure it matches category field in products.ts)
-  const category = slug.toLowerCase();
-
-  // Find products belonging to this category
   const filteredProducts = products.filter(
-    (product) => product.category.toLowerCase() === category
+    (p) => p.category.toLowerCase() === normalized
   );
 
   return (
-    <div className="px-6 py-10">
-      <h1 className="text-3xl font-bold mb-6 capitalize">
-        {category}
-      </h1>
+    <div className="px-6 py-12">
+      <h1 className="text-3xl font-bold mb-8 capitalize">{normalized || "Category"}</h1>
 
       {filteredProducts.length > 0 ? (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
       ) : (
-        <div className="text-center py-20">
-          <p className="text-xl font-medium text-gray-600">
-            No products found in "{category}".
-          </p>
-        </div>
+        <p className="text-gray-500">No products found in this category.</p>
       )}
     </div>
   );
