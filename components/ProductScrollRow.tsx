@@ -49,20 +49,23 @@ const products: Product[] = [
 
 const ProductScrollRow = () => {
   return (
-    <section className="py-12 px-4">
-  <h2 className="text-4xl font-bold mb-6 text-center">Our Collection</h2>
-  <div className="flex gap-6 overflow-x-auto scrollbar-hide flex-nowrap">
-    {products.map((product) => (
-      <div
-        key={product.id}
-        className="min-w-[400px] max-w-[400px] flex-shrink-0"
-      >
-        <ProductCard product={product} />
+    <section className="py-12 px-4 bg-gray-50 border-t border-b">
+      <h2 className="text-4xl font-bold mb-6 text-center">Our Collection</h2>
+      <div className="relative">
+        <div className="flex gap-6 overflow-x-auto flex-nowrap pb-4" style={{scrollbarWidth: 'thin'}}>
+          {products.map((product) => (
+            <div
+              key={product.id}
+              className="min-w-[300px] max-w-[300px] flex-shrink-0"
+            >
+              <ProductCard product={product} />
+            </div>
+          ))}
+        </div>
+        <div className="absolute left-0 right-0 bottom-0 h-2 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 pointer-events-none" />
+        <div className="text-center text-xs text-gray-500 mt-2">Scroll horizontally to see more products →</div>
       </div>
-    ))}
-  </div>
-</section>
-
+    </section>
   );
 };
 
