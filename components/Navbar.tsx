@@ -1,10 +1,23 @@
 "use client";
 
-import { Heart, Search, ShoppingCart, User } from "lucide-react";
+import { Heart, Search, ShoppingCart, User, ChevronDown } from "lucide-react";
 import { useCart } from "@/context/CartContext";
+import { useState } from "react";
 
 const Navbar = () => {
   const { cart, wishlist } = useCart();
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
+
+  const menuItems = {
+    "New Arrivals": ["Earrings", "Pendants", "Rings"],
+    "Best Sellers": ["Top Earrings", "Top Rings"],
+    "Earrings": ["Studs", "Hoops", "Jhumkas", "Danglers"],
+    "Necklaces & Pendants": ["Chains", "Lockets", "Hearts"],
+    "Rings": ["Solitaire", "Couple Rings", "Adjustable"],
+    "Bracelets & Bangles": ["Silver", "Charm Bracelets", "Cuffs"],
+    "Toe Rings": ["Plain", "Designer", "Adjustable"],
+    "Gifting": ["Rakhi", "Festive Specials", "Gift Cards"],
+  };
 
   return (
     <div className="sticky top-0 z-50">
@@ -53,19 +66,46 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Sub-navbar */}
-      <div className="hidden lg:flex justify-center gap-8 py-2 text-sm text-gray-800 border-b bg-white">
-        <div className="cursor-pointer">Shop by Category ▾</div>
-        <div className="cursor-pointer">Gold with Lab Diamonds</div>
-        <div className="cursor-pointer text-pink-500 font-medium">
-          Rakhi SALE
-        </div>
-        <div className="cursor-pointer">Silanyas Gift Card</div>
-        <div className="cursor-pointer">Gift Store ▾</div>
-        <div className="cursor-pointer">Mens Jewellery</div>
-        <div className="cursor-pointer">Latest Collections ▾</div>
-        <div className="cursor-pointer">More at Silanyas ▾</div>
+      {/* Sub-navbar with dropdowns */}
+<div className="hidden lg:flex justify-center gap-8 py-2 text-sm text-gray-800 border-b bg-white relative">
+  {Object.keys(menuItems).map((category) => {
+    const isOpen = openMenu === category;
+
+    return (
+      <div
+        key={category}
+        className="relative group"
+        // Desktop: hover
+        onMouseEnter={() => setOpenMenu(category)}
+        onMouseLeave={() => setOpenMenu(null)}
+      >
+        {/* Category Button */}
+        <button
+          onClick={() => setOpenMenu(isOpen ? null : category)} // Mobile: click
+          className={`cursor-pointer flex items-center gap-1 px-2 py-1 rounded transition-colors duration-200
+            ${isOpen ? "text-pink-600 font-semibold bg-pink-50" : "hover:text-pink-500"}`}
+        >
+          {category} <ChevronDown className="w-3 h-3" />
+        </button>
+
+        {/* Dropdown */}
+        {isOpen && (
+          <div className="absolute left-0 mt-2 bg-white border shadow-lg rounded-md p-2 w-48 z-50">
+            {menuItems[category as keyof typeof menuItems].map((item) => (
+              <a
+                key={item}
+                href={`/${item.toLowerCase().replace(/\s+/g, "-")}`}
+                className="block px-3 py-1 text-gray-700 hover:bg-pink-100 hover:text-pink-600 rounded transition-colors duration-200"
+              >
+                {item}
+              </a>
+            ))}
+          </div>
+        )}
       </div>
+    );
+  })}
+</div>
     </div>
   );
 };
