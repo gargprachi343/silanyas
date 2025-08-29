@@ -8,6 +8,7 @@ import { useState } from "react";
 const Navbar = () => {
   const { cart, wishlist } = useCart();
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [closeTimeout, setCloseTimeout] = useState<NodeJS.Timeout | null>(null);
 
   const menuItems = {
     "New Arrivals": ["Earrings", "Pendants", "Rings"],
@@ -76,8 +77,10 @@ const Navbar = () => {
             <div
               key={category}
               className="relative group"
-              onMouseEnter={() => setOpenMenu(category)}
-              onMouseLeave={() => setOpenMenu(null)}
+              onMouseEnter={() => {
+                if (closeTimeout) clearTimeout(closeTimeout);
+                setOpenMenu(category);
+              }}
             >
               {/* Category Link */}
               <Link
@@ -91,12 +94,25 @@ const Navbar = () => {
 
               {/* Dropdown */}
               {isOpen && (
-                <div className="absolute left-0 mt-2 bg-white border shadow-lg rounded-md p-2 w-48 z-50">
+                <div
+                  className="absolute left-0 mt-2 bg-white border shadow-lg rounded-md p-2 w-48 z-50"
+                  onMouseLeave={() => {
+                    const timeout = setTimeout(() => setOpenMenu(null), 120);
+                    setCloseTimeout(timeout);
+                  }}
+                  onMouseEnter={() => {
+                    if (closeTimeout) clearTimeout(closeTimeout);
+                  }}
+                >
                   {menuItems[category as keyof typeof menuItems].map((item) => {
-                    const link =
-                      item.toLowerCase() === "earrings"
-                        ? "/earrings"
-                        : `/${item.toLowerCase().replace(/\s+/g, "-")}`;
+                    let link;
+                    if (category === "Earrings" && item.toLowerCase() === "studs") {
+                      link = "/earrings/studs";
+                    } else if (item.toLowerCase() === "earrings") {
+                      link = "/earrings";
+                    } else {
+                      link = `/${item.toLowerCase().replace(/\s+/g, "-")}`;
+                    }
                     return (
                       <Link
                         key={item}
