@@ -1,13 +1,41 @@
 "use client";
 
+import { useEffect } from "react";
+
 const CheckoutPage = () => {
-  const handlePayment = () => {
-    alert("Redirecting to Payment Gateway...");
-    // 🔗 Here you’ll integrate Razorpay / Stripe
-    // Example for Razorpay:
-    // const options = { ... };
-    // const rzp = new window.Razorpay(options);
-    // rzp.open();
+  useEffect(() => {
+    // Load Cashfree Drop-in JS
+    const script = document.createElement("script");
+    script.src = "https://sdk.cashfree.com/js/ui/2.0.0/cashfree.sandbox.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
+
+  const handlePayment = async () => {
+    // You should get these from your backend after creating an order
+    const orderToken = "YOUR_ORDER_TOKEN"; // Replace with actual token from backend
+
+    // @ts-expect-error Cashfree SDK is not typed
+    if (window.Cashfree) {
+      // @ts-expect-error Cashfree SDK is not typed
+      window.Cashfree.init({
+        mode: "sandbox", // or "production"
+        orderToken,
+        onSuccess: function () {
+          alert("Payment Success!");
+        },
+        onFailure: function () {
+          alert("Payment Failed!");
+        },
+        onClose: function () {
+          alert("Payment Modal Closed");
+        }
+      });
+      // @ts-expect-error Cashfree SDK is not typed
+      window.Cashfree.open();
+    } else {
+      alert("Cashfree SDK not loaded");
+    }
   };
 
   return (

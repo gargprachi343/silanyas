@@ -48,7 +48,7 @@ export const earrings: EarringProduct[] = [
         reviews: 287,
     },
     {
-        id: "earring-3",
+        id: "earring-5",
         name: "Anushka Sharma Golden Bloom Earrings",
         imageUrl: "/assets/earrings3.jpg",
         price: 1999,
@@ -57,7 +57,7 @@ export const earrings: EarringProduct[] = [
         reviews: 128,
     },
     {
-        id: "earring-4",
+        id: "earring-6",
         name: "Silver Pearl Small Stud Earrings",
         imageUrl: "/assets/earrings4.jpg",
         price: 1299,
@@ -66,7 +66,7 @@ export const earrings: EarringProduct[] = [
         reviews: 287,
     },
     {
-        id: "earring-3",
+        id: "earring-7",
         name: "Anushka Sharma Golden Bloom Earrings",
         imageUrl: "/assets/earrings3.jpg",
         price: 1999,
@@ -75,7 +75,7 @@ export const earrings: EarringProduct[] = [
         reviews: 128,
     },
     {
-        id: "earring-4",
+        id: "earring-8",
         name: "Silver Pearl Small Stud Earrings",
         imageUrl: "/assets/earrings4.jpg",
         price: 1299,
