@@ -1,9 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import EarringProductCard from "@/components/EarringProductCard";
 import { earrings } from "@/data/earrings";
+import { useCart } from "@/context/CartContext";
 
 export default function EarringsPage() {
-    // Use earrings from earrings.ts
+    const { addToCart, addToWishlist } = useCart();
 
     return (
         <main className="min-h-screen bg-white text-gray-900">
@@ -21,12 +24,34 @@ export default function EarringsPage() {
                     <p className="text-xl text-pink-800">Let your ears do the talking</p>
                 </div>
             </div>
+
             {/* Our Collection Section */}
             <section className="max-w-7xl mx-auto px-4">
                 <h2 className="text-3xl font-bold mb-8 text-center">Our Collection</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
                     {earrings.map((earring) => (
-                        <EarringProductCard key={earring.id} {...earring} />
+                        <EarringProductCard
+                            key={earring.id}
+                            {...earring}
+                            onAddToCart={() =>
+                                addToCart({
+                                    id: earring.id,
+                                    name: earring.name,
+                                    description: "Earring product",
+                                    price: earring.price,
+                                    imageUrl: earring.imageUrl,
+                                })
+                            }
+                            onAddToWishlist={() =>
+                                addToWishlist({
+                                    id: earring.id,
+                                    name: earring.name,
+                                    description: "Earring product",
+                                    price: earring.price,
+                                    imageUrl: earring.imageUrl,
+                                })
+                            }
+                        />
                     ))}
                 </div>
             </section>

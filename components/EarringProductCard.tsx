@@ -28,7 +28,13 @@ export default function EarringProductCard({
     return (
         <div className="border rounded-lg p-4 bg-white shadow relative flex flex-col">
             <div className="relative w-full h-64 mb-2">
-                <Image src={imageUrl} alt={name} fill className="object-cover rounded-md" />
+                <Image
+                    src={imageUrl || "/assets/earrings1.jpg"}
+                    alt={name || "Earring"}
+                    fill
+                    className="object-cover rounded-md"
+                    onError={(e) => { e.currentTarget.src = "/assets/earrings1.jpg"; }}
+                />
                 <button
                     onClick={onAddToWishlist}
                     className="absolute top-3 right-3 bg-white rounded-full p-1 shadow"
@@ -37,17 +43,17 @@ export default function EarringProductCard({
                 </button>
             </div>
             <div className="flex items-center gap-2 text-xs mb-1">
-                <span>{rating} ★</span>
-                <span>| {reviews}</span>
+                <span>{rating ? rating : "4.8"} ★</span>
+                <span>| {reviews ? reviews : "100"}</span>
             </div>
             <div className="flex items-center gap-2 mb-1">
-                <span className="text-lg font-bold">₹{price}</span>
+                <span className="text-lg font-bold">₹{price ? price : "--"}</span>
                 {oldPrice && (
                     <span className="text-gray-400 line-through text-sm">₹{oldPrice}</span>
                 )}
             </div>
-            <Link href={`/product/${id}`} className="block font-medium text-gray-900 hover:underline mb-2">
-                {name}
+            <Link href={`/product/${id || ""}`} className="block font-medium text-gray-900 hover:underline mb-2">
+                {name || "Earring"}
             </Link>
             <button
                 onClick={onAddToCart}

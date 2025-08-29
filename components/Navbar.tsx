@@ -1,6 +1,7 @@
 "use client";
 
 import { Heart, Search, ShoppingCart, User, ChevronDown } from "lucide-react";
+import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import { useState } from "react";
 
@@ -47,65 +48,71 @@ const Navbar = () => {
           <div className="flex items-center gap-1 cursor-pointer">
             <User className="w-5 h-5" /> ACCOUNT
           </div>
-          <a href="/wishlist" className="flex items-center gap-1 cursor-pointer">
+          <Link href="/wishlist" className="flex items-center gap-1 cursor-pointer">
             <Heart className="w-5 h-5" /> WISHLIST
             {wishlist.length > 0 && (
               <span className="ml-1 bg-pink-500 text-white rounded-full px-2 text-xs font-bold">
                 {wishlist.length}
               </span>
             )}
-          </a>
-          <a href="/cart" className="flex items-center gap-1 cursor-pointer">
+          </Link>
+          <Link href="/cart" className="flex items-center gap-1 cursor-pointer">
             <ShoppingCart className="w-5 h-5" /> CART
             {cart.length > 0 && (
               <span className="ml-1 bg-orange-500 text-white rounded-full px-2 text-xs font-bold">
                 {cart.length}
               </span>
             )}
-          </a>
+          </Link>
         </div>
       </nav>
 
       {/* Sub-navbar with dropdowns */}
-<div className="hidden lg:flex justify-center gap-8 py-2 text-sm text-gray-800 border-b bg-white relative">
-  {Object.keys(menuItems).map((category) => {
-    const isOpen = openMenu === category;
+      <div className="hidden lg:flex justify-center gap-8 py-2 text-sm text-gray-800 border-b bg-white relative">
+        {Object.keys(menuItems).map((category) => {
+          const isOpen = openMenu === category;
 
-    return (
-      <div
-        key={category}
-        className="relative group"
-        // Desktop: hover
-        onMouseEnter={() => setOpenMenu(category)}
-        onMouseLeave={() => setOpenMenu(null)}
-      >
-        {/* Category Button */}
-        <button
-          onClick={() => setOpenMenu(isOpen ? null : category)} // Mobile: click
-          className={`cursor-pointer flex items-center gap-1 px-2 py-1 rounded transition-colors duration-200
-            ${isOpen ? "text-pink-600 font-semibold bg-pink-50" : "hover:text-pink-500"}`}
-        >
-          {category} <ChevronDown className="w-3 h-3" />
-        </button>
-
-        {/* Dropdown */}
-        {isOpen && (
-          <div className="absolute left-0 mt-2 bg-white border shadow-lg rounded-md p-2 w-48 z-50">
-            {menuItems[category as keyof typeof menuItems].map((item) => (
-              <a
-                key={item}
-                href={`/${item.toLowerCase().replace(/\s+/g, "-")}`}
-                className="block px-3 py-1 text-gray-700 hover:bg-pink-100 hover:text-pink-600 rounded transition-colors duration-200"
+          return (
+            <div
+              key={category}
+              className="relative group"
+              onMouseEnter={() => setOpenMenu(category)}
+              onMouseLeave={() => setOpenMenu(null)}
+            >
+              {/* Category Link */}
+              <Link
+                href={`/${category.toLowerCase().replace(/\s+/g, "-")}`}
+                onClick={() => setOpenMenu(isOpen ? null : category)}
+                className={`cursor-pointer flex items-center gap-1 px-2 py-1 rounded transition-colors duration-200
+                ${isOpen ? "text-pink-600 font-semibold bg-pink-50" : "hover:text-pink-500"}`}
               >
-                {item}
-              </a>
-            ))}
-          </div>
-        )}
+                {category} <ChevronDown className="w-3 h-3" />
+              </Link>
+
+              {/* Dropdown */}
+              {isOpen && (
+                <div className="absolute left-0 mt-2 bg-white border shadow-lg rounded-md p-2 w-48 z-50">
+                  {menuItems[category as keyof typeof menuItems].map((item) => {
+                    const link =
+                      item.toLowerCase() === "earrings"
+                        ? "/earrings"
+                        : `/${item.toLowerCase().replace(/\s+/g, "-")}`;
+                    return (
+                      <Link
+                        key={item}
+                        href={link}
+                        className="block px-3 py-1 text-gray-700 hover:bg-pink-100 hover:text-pink-600 rounded transition-colors duration-200"
+                      >
+                        {item}
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
-    );
-  })}
-</div>
     </div>
   );
 };
