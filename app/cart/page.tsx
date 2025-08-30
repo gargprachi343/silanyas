@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { load } from "@cashfreepayments/cashfree-js";
 
 interface Product {
   id: string;
@@ -12,6 +13,7 @@ interface Product {
 const CartPage = () => {
   const [cartItems, setCartItems] = useState<Product[]>([]);
   const [total, setTotal] = useState(0);
+  const [cashfree, setCashfree] = useState<any>(null);
 
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -22,11 +24,36 @@ const CartPage = () => {
       0
     );
     setTotal(totalAmount);
+
+    // Load Cashfree SDK
+    load({ mode: "sandbox" }).then((cf) => setCashfree(cf));
   }, []);
 
-  const handleCheckout = () => {
-    // Redirect to payment page
-    window.location.href = "/checkout";
+  const handleCheckout = async () => {
+    try {
+      // Call backend to create order
+      const res = await fetch("/api/create-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ amount: total }),
+      });
+
+      const data = await res.json();
+
+      if (!data.orderToken) {
+        alert("Error creating order");
+        return;
+      }
+
+      // Open Cashfree Checkout
+      cashfree.checkout({
+        paymentSessionId: data.orderToken,
+        redirectTarget: "_self", // stays on same page
+      });
+    } catch (error) {
+      console.error(error);
+      alert("Checkout failed");
+    }
   };
 
   return (
