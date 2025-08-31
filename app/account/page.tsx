@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { ConfirmationResult } from 'firebase/auth';
-import { auth, RecaptchaVerifier, signInWithPhoneNumber } from '../lib/firebase';
+// Update the import path to the correct firebase config location
+import { auth, RecaptchaVerifier, signInWithPhoneNumber } from "../../lib/firebase";
 
 declare global {
     interface Window {
@@ -22,10 +23,19 @@ const AccountLoginPage = () => {
         setError(null);
         // Setup invisible reCAPTCHA
         if (!window.recaptchaVerifier) {
-            window.recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', {
-                'size': 'invisible',
-                'callback': () => { }
-            }, auth);
+            const recaptchaContainer = document.getElementById('recaptcha-container');
+            if (!recaptchaContainer) {
+                setError('reCAPTCHA container not found.');
+                return;
+            }
+            window.recaptchaVerifier = new RecaptchaVerifier(
+                recaptchaContainer, // container element
+                {
+                    'size': 'invisible',
+                    'callback': () => { }
+                },
+                auth // Auth instance
+            );
         }
         const appVerifier = window.recaptchaVerifier;
         const fullPhone = countryCode + phone;
