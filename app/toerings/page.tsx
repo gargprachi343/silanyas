@@ -20,8 +20,8 @@ export default function ToeRingsPage() {
                     priority
                 />
                 <div className="absolute inset-0 bg-pink-200 bg-opacity-60 flex flex-col justify-center items-center">
-                    <h1 className="text-5xl font-bold text-pink-900 mb-2">TOE RINGS</h1>
-                    <p className="text-xl text-pink-800">Adorn your toes with elegance</p>
+                   
+                  
                 </div>
             </div>
 
