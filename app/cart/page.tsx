@@ -11,13 +11,17 @@ interface Product {
   imageUrl: string;
 }
 
+interface Cashfree {
+  checkout: (options: { paymentSessionId: string; redirectTarget?: string }) => void;
+}
+
 const CartPage = () => {
   const [cartItems, setCartItems] = useState<Product[]>([]);
   const [total, setTotal] = useState(0);
-  const [cashfree, setCashfree] = useState<any>(null);
+  const [cashfree, setCashfree] = useState<Cashfree | null>(null);
 
   useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const storedCart: Product[] = JSON.parse(localStorage.getItem("cart") || "[]");
     setCartItems(storedCart);
 
     const totalAmount = storedCart.reduce(
@@ -27,7 +31,7 @@ const CartPage = () => {
     setTotal(totalAmount);
 
     // Load Cashfree SDK
-    load({ mode: "sandbox" }).then((cf) => setCashfree(cf));
+    load({ mode: "sandbox" }).then((cf) => setCashfree(cf as Cashfree));
   }, []);
 
   const handleCheckout = async () => {
@@ -47,7 +51,7 @@ const CartPage = () => {
       }
 
       // Open Cashfree Checkout
-      cashfree.checkout({
+      cashfree?.checkout({
         paymentSessionId: data.orderToken,
         redirectTarget: "_self", // stays on same page
       });
@@ -67,7 +71,13 @@ const CartPage = () => {
             key={item.id}
             className="flex items-center justify-between border p-4 rounded-xl shadow"
           >
-            <Image src={item.imageUrl} alt={item.name} width={80} height={80} className="w-20 h-20 object-cover rounded" />
+            <Image
+              src={item.imageUrl}
+              alt={item.name}
+              width={80}
+              height={80}
+              className="w-20 h-20 object-cover rounded"
+            />
             <div>
               <h2 className="font-semibold">{item.name}</h2>
               <p>₹{item.price}</p>

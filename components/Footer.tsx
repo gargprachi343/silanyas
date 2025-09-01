@@ -8,7 +8,7 @@ const Footer = () => (
     <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
       {/* Logo and Description */}
       <div>
-        <img src="/assets/silanyas-logo.png" alt="Silanyas Logo" className="h-16 mb-6 ml-12" />
+      
         <p className="text-sm text-gray-400">
           Silanyas brings you timeless silver jewelry — crafted with elegance and purpose.
           Explore modern designs rooted in tradition.
@@ -20,8 +20,8 @@ const Footer = () => (
         <h3 className="text-blue-200 font-semibold mb-2">ABOUT US</h3>
         <ul className="space-y-1 text-sm text-gray-300">
           <li>
-  <Link href="/about-us">About</Link>
-</li>
+            <Link href="/about-us">About</Link>
+          </li>
           <li><a href="#">Team</a></li>
           <li><a href="#">Careers</a></li>
           <li><a href="#">Press Kit</a></li>
@@ -57,9 +57,9 @@ const Footer = () => (
 
     {/* Bottom Row */}
     <div className="mt-10 border-t border-gray-800 pt-6 flex flex-col items-center justify-center text-center gap-4">
-  <p className="text-sm text-gray-400">
-    © 2025 <span className="text-blue-200 font-medium">Silanyas</span>. Designed with ❤️ for elegance.
-  </p>
+      <p className="text-sm text-gray-400">
+        © 2025 <span className="text-blue-200 font-medium">Silanyas</span>. Designed with ❤️ for elegance.
+      </p>
 
     </div>
   </footer>

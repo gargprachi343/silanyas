@@ -8,25 +8,11 @@ import { toerings } from "@/data/toerings";
 // If the file does not exist, create 'toerings.ts' in 'app/data' or 'src/data' and export the toerings array.
 
 // Define the type for a toe ring item
-type ToeRing = {
-    id: string;
-    name: string;
-    imageUrl: string;
-    price: number;
-    // add other properties as needed
-};
 
 import { useCart } from "@/context/CartContext";
 
 // Removed unused type 'ToeRing'
 // Define the type for a toe ring item
-type ToeRingType = {
-    id: string;
-    name: string;
-    imageUrl: string;
-    price: number;
-    // add other properties as needed
-};
 
 const Page = () => {
     const params = useParams();
