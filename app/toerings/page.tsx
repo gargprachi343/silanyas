@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import EarringProductCard from "@/components/EarringProductCard";
 import { toerings } from "../../data/toerings";
 import { useCart } from "@/context/CartContext";
@@ -12,12 +13,9 @@ export default function ToeRingsPage() {
         <main className="min-h-screen bg-white text-gray-900">
             {/* Navigation Link to Toe Rings */}
             <nav className="w-full bg-white border-b px-4 py-2 flex justify-center">
-                <a
-                    href="/toerings"
-                    className="text-pink-600 font-semibold hover:underline text-lg"
-                >
+                <Link href="/toerings" className="text-pink-600 font-semibold hover:underline text-lg">
                     Toe Rings
-                </a>
+                </Link>
             </nav>
             {/* Banner */}
             <div className="w-full h-64 relative mb-8">

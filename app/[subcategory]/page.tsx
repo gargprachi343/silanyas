@@ -6,11 +6,24 @@ import ProductCard from "@/components/ProductCard";
 export default function SubCategoryPage({ params }: { params: { subcategory: string } }) {
   const { subcategory } = params;
 
-  // merge all product arrays into one
-  const allProducts = Object.values(collectionproducts).flat();
+  const allProducts = Object.values(collectionproducts)
+    .flat()
+    .map((product: any) => ({
+      ...product,
+      description: product.description ?? "",
+      price: product.price ?? 0,
+      imageUrl: product.imageUrl ?? "",
+    }));
 
-  // filter by category or subcategory (case insensitive)
-  const products = allProducts.filter((p: any) => {
+  type Product = {
+    id: string;
+    name?: string;
+    description?: string;
+    category?: string;
+    subcategory?: string;
+    [key: string]: any;
+  };
+  const products = allProducts.filter((p: Product) => {
     const category = p.category?.toLowerCase() || "";
     const subCat = p.subcategory?.toLowerCase() || "";
     return (
@@ -21,14 +34,12 @@ export default function SubCategoryPage({ params }: { params: { subcategory: str
 
   return (
     <div className="px-6 py-10">
-      <h1 className="text-2xl font-bold capitalize mb-6">{subcategory}</h1>
-
       {products.length > 0 ? (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {products.map((product: any) => (
+          {products.map((product) => (
             <ProductCard
               key={product.id}
-              product={{ ...product, description: product.description ?? "" }}
+              product={{ ...product, description: product.description ?? "", price: product.price ?? 0, imageUrl: product.imageUrl ?? "" }}
             />
           ))}
         </div>

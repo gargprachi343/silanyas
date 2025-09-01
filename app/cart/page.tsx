@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { load } from "@cashfreepayments/cashfree-js";
+import Image from "next/image";
 
 interface Product {
   id: string;
@@ -66,7 +67,7 @@ const CartPage = () => {
             key={item.id}
             className="flex items-center justify-between border p-4 rounded-xl shadow"
           >
-            <img src={item.imageUrl} alt={item.name} className="w-20 h-20" />
+            <Image src={item.imageUrl} alt={item.name} width={80} height={80} className="w-20 h-20 object-cover rounded" />
             <div>
               <h2 className="font-semibold">{item.name}</h2>
               <p>₹{item.price}</p>

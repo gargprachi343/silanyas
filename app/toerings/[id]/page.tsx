@@ -15,20 +15,30 @@ type ToeRing = {
     price: number;
     // add other properties as needed
 };
+
 import { useCart } from "@/context/CartContext";
 
-export default function ToeRingDetailPage() {
+// Removed unused type 'ToeRing'
+// Define the type for a toe ring item
+type ToeRingType = {
+    id: string;
+    name: string;
+    imageUrl: string;
+    price: number;
+    // add other properties as needed
+};
+
+const Page = () => {
     const params = useParams();
-    const { id } = params;
-    const toeRing = toerings.find((item) => item.id === id);
-    const [pincode, setPincode] = React.useState("");
-    const [showMore, setShowMore] = React.useState(false);
-    // Only setup gallery and selectedImg if toeRing exists
+    const toeRing = toerings.find(item => item.id === params.id);
+
     const gallery = toeRing
         ? [toeRing.imageUrl, "/assets/toerings/toering2.jpg", "/assets/toerings/toering3.jpg", "/assets/toerings/toering4.jpg"]
         : [];
     const [selectedImg, setSelectedImg] = React.useState(gallery[0] || "");
     const { addToCart } = useCart();
+    const [pincode, setPincode] = React.useState("");
+    const [showMore, setShowMore] = React.useState(false);
 
     if (!toeRing) {
         return (
@@ -135,4 +145,6 @@ export default function ToeRingDetailPage() {
             </div>
         </main>
     );
-}
+};
+
+export default Page;
