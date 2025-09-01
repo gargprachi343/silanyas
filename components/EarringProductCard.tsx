@@ -12,12 +12,14 @@ interface EarringProductCardProps {
     reviews?: number;
     onAddToCart?: () => void;
     onAddToWishlist?: () => void;
+    slugPrefix?: string;
 }
 
 const EarringProductCard: React.FC<EarringProductCardProps> = ({
     id,
     name,
     imageUrl,
+    slugPrefix,
     price,
     oldPrice,
     rating,
@@ -25,10 +27,11 @@ const EarringProductCard: React.FC<EarringProductCardProps> = ({
     onAddToCart,
     onAddToWishlist,
 }): React.ReactElement => {
+    const detailLink = `/${slugPrefix || "earrings"}/${id}`;
     return (
         <div className="border rounded-lg p-4 bg-white shadow relative flex flex-col">
             <div className="relative w-full h-64 mb-2">
-                <Link href={`/earrings/${id}`} className="block w-full h-full">
+                <Link href={detailLink} className="block w-full h-full">
                     <Image
                         src={imageUrl || "/assets/earrings1.jpg"}
                         alt={name || "Earring"}
@@ -53,7 +56,7 @@ const EarringProductCard: React.FC<EarringProductCardProps> = ({
                 <span>{rating ? rating : "4.8"} ★</span>
                 <span>| {reviews ? reviews : "100"}</span>
             </div>
-            <Link href={`/earrings/${id}`} className="block font-medium text-gray-900 hover:underline mb-2">
+            <Link href={detailLink} className="block font-medium text-gray-900 hover:underline mb-2">
                 {name || "Earring"}
             </Link>
             <div className="flex items-center gap-2 mb-1">

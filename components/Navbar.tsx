@@ -49,6 +49,7 @@ const Navbar = () => {
           <div className="flex items-center gap-1 cursor-pointer">
             <User className="w-5 h-5" /> ACCOUNT
           </div>
+        
           <Link href="/wishlist" className="flex items-center gap-1 cursor-pointer">
             <Heart className="w-5 h-5" /> WISHLIST
             {wishlist.length > 0 && (
@@ -84,7 +85,7 @@ const Navbar = () => {
             >
               {/* Category Link */}
               <Link
-                href={`/${category.toLowerCase().replace(/\s+/g, "-")}`}
+                href={`/${category === "Toe Rings" ? "toerings" : category.toLowerCase().replace(/\s+/g, "-")}`}
                 onClick={() => setOpenMenu(isOpen ? null : category)}
                 className={`cursor-pointer flex items-center gap-1 px-2 py-1 rounded transition-colors duration-200
                 ${isOpen ? "text-pink-600 font-semibold bg-pink-50" : "hover:text-pink-500"}`}
@@ -110,6 +111,8 @@ const Navbar = () => {
                       link = "/earrings/studs";
                     } else if (item.toLowerCase() === "earrings") {
                       link = "/earrings";
+                    } else if (category === "Toe Rings") {
+                      link = "/toerings";
                     } else {
                       link = `/${item.toLowerCase().replace(/\s+/g, "-")}`;
                     }
