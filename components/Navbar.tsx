@@ -103,7 +103,7 @@ const Navbar = () => {
             >
               {/* Category Link */}
               <Link
-                href={`/${category === "Toe Rings" ? "toerings" : category.toLowerCase().replace(/\s+/g, "-")}`}
+                href={`/${category === "Toe Rings" ? "toerings" : category === "Pendants" ? "pendant" : category.toLowerCase().replace(/\s+/g, "-")}`}
                 onClick={() => setOpenMenu(isOpen ? null : category)}
                 className={`cursor-pointer flex items-center gap-1 px-2 py-1 rounded transition-colors duration-200
                 ${isOpen ? "text-blue-600 font-semibold bg-blue-50" : "hover:text-blue-500"}`}
@@ -131,6 +131,8 @@ const Navbar = () => {
                       link = "/earrings";
                     } else if (category === "Toe Rings") {
                       link = "/toerings";
+                    } else if (category === "Pendants") {
+                      link = "/pendant";
                     } else {
                       link = `/${item.toLowerCase().replace(/\s+/g, "-")}`;
                     }
