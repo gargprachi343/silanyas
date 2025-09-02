@@ -30,7 +30,7 @@ export default async function EarringDetailPage({ params }: PageProps) {
         </div>
         <div>
           <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
-          <div className="text-xl font-semibold text-pink-600 mb-4">
+          <div className="text-xl font-semibold text-blue-600 mb-4">
             ₹{product.price}
           </div>
           {product.oldPrice && (

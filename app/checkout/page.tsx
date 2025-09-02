@@ -57,7 +57,7 @@ const CheckoutPage = () => {
       <div className="mt-8">
         <button
           onClick={handlePayment}
-          className="bg-pink-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-pink-700"
+          className="bg-blue-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-blue-700"
         >
           Proceed to Pay
         </button>
