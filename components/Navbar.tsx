@@ -32,9 +32,6 @@ const Navbar = () => {
       {/* Main navbar */}
       <nav className="w-full bg-white border-b px-4 py-3 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
         <div className="flex flex-col lg:flex-row lg:items-center gap-4 w-full">
-          <div className="text-3xl font-bold tracking-tight">
-            SILANYAS<sup className="text-xl">♦</sup>
-          </div>
           <div className="relative w-full max-w-xl mx-auto">
             <input
               type="text"
@@ -53,7 +50,7 @@ const Navbar = () => {
           <Link href="/wishlist" className="flex items-center gap-1 cursor-pointer">
             <Heart className="w-5 h-5" /> WISHLIST
             {wishlist.length > 0 && (
-              <span className="ml-1 bg-pink-500 text-white rounded-full px-2 text-xs font-bold">
+              <span className="ml-1 bg-blue-500 text-white rounded-full px-2 text-xs font-bold">
                 {wishlist.length}
               </span>
             )}
@@ -88,7 +85,7 @@ const Navbar = () => {
                 href={`/${category === "Toe Rings" ? "toerings" : category.toLowerCase().replace(/\s+/g, "-")}`}
                 onClick={() => setOpenMenu(isOpen ? null : category)}
                 className={`cursor-pointer flex items-center gap-1 px-2 py-1 rounded transition-colors duration-200
-                ${isOpen ? "text-pink-600 font-semibold bg-pink-50" : "hover:text-pink-500"}`}
+                ${isOpen ? "text-blue-600 font-semibold bg-blue-50" : "hover:text-blue-500"}`}
               >
                 {category} <ChevronDown className="w-3 h-3" />
               </Link>
@@ -120,7 +117,7 @@ const Navbar = () => {
                       <Link
                         key={item}
                         href={link}
-                        className="block px-3 py-1 text-gray-700 hover:bg-pink-100 hover:text-pink-600 rounded transition-colors duration-200"
+                        className="block px-3 py-1 text-gray-700 hover:bg-blue-100 hover:text-blue-600 rounded transition-colors duration-200"
                       >
                         {item}
                       </Link>

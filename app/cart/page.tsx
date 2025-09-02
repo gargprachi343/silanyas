@@ -91,7 +91,7 @@ const CartPage = () => {
         <h2 className="text-xl font-bold">Total: ₹{total}</h2>
         <button
           onClick={handleCheckout}
-          className="bg-pink-600 text-white px-6 py-3 rounded-xl hover:bg-pink-700"
+          className="bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700"
         >
           Checkout
         </button>

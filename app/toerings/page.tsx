@@ -13,7 +13,7 @@ export default function ToeRingsPage() {
         <main className="min-h-screen bg-white text-gray-900">
             {/* Navigation Link to Toe Rings */}
             <nav className="w-full bg-white border-b px-4 py-2 flex justify-center">
-                <Link href="/toerings" className="text-pink-600 font-semibold hover:underline text-lg">
+                <Link href="/toerings" className="text-blue-600 font-semibold hover:underline text-lg">
                     Toe Rings
                 </Link>
             </nav>
@@ -26,7 +26,7 @@ export default function ToeRingsPage() {
                     className="object-cover object-top"
                     priority
                 />
-                <div className="absolute inset-0 bg-pink-200 bg-opacity-60 flex flex-col justify-center items-center">
+                <div className="absolute inset-0 bg-blue-200 bg-opacity-60 flex flex-col justify-center items-center">
 
 
                 </div>

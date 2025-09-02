@@ -19,9 +19,9 @@ export default function EarringsPage() {
                     className="object-cover object-top"
                     priority
                 />
-                <div className="absolute inset-0 bg-pink-200 bg-opacity-60 flex flex-col justify-center items-center">
-                    <h1 className="text-5xl font-bold text-pink-900 mb-2">EARRINGS</h1>
-                    <p className="text-xl text-pink-800">Let your ears do the talking</p>
+                <div className="absolute inset-0 bg-blue-200 bg-opacity-60 flex flex-col justify-center items-center">
+                    <h1 className="text-5xl font-bold text-blue-900 mb-2">EARRINGS</h1>
+                    <p className="text-xl text-blue-800">Let your ears do the talking</p>
                 </div>
             </div>
 

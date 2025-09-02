@@ -49,7 +49,7 @@ const EarringProductCard: React.FC<EarringProductCardProps> = ({
                     }}
                     className="absolute top-3 right-3 bg-white rounded-full p-1 shadow"
                 >
-                    <Heart className="w-5 h-5 text-pink-400 hover:text-pink-600" />
+                    <Heart className="w-5 h-5 text-blue-400 hover:text-blue-600" />
                 </button>
             </div>
             <div className="flex items-center gap-2 text-xs mb-1">
@@ -68,7 +68,7 @@ const EarringProductCard: React.FC<EarringProductCardProps> = ({
             <button
                 type="button"
                 onClick={onAddToCart}
-                className="bg-pink-200 text-pink-900 font-semibold py-2 rounded mt-auto hover:bg-pink-300 transition"
+                className="bg-blue-200 text-blue-900 font-semibold py-2 rounded mt-auto hover:bg-blue-300 transition"
             >
                 Add to Cart
             </button>

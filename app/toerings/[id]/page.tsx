@@ -44,7 +44,7 @@ const Page = () => {
                     </div>
                     <div className="flex gap-2 overflow-x-auto">
                         {gallery.map((img, idx) => (
-                            <button key={idx} onClick={() => setSelectedImg(img)} className={`w-20 h-20 relative border ${selectedImg === img ? 'border-pink-400' : 'border-gray-200'} rounded-md`}>
+                            <button key={idx} onClick={() => setSelectedImg(img)} className={`w-20 h-20 relative border ${selectedImg === img ? 'border-blue-400' : 'border-gray-200'} rounded-md`}>
                                 <Image src={img} alt={`Gallery ${idx}`} fill className="object-cover rounded" />
                             </button>
                         ))}
@@ -62,13 +62,13 @@ const Page = () => {
                     </div>
                     <div className="text-sm text-gray-500 mb-2">MRP incl. of all taxes</div>
                     <h1 className="text-2xl font-semibold mb-2">{toeRing.name}</h1>
-                    <div className="mb-2 text-pink-700 font-medium">Made With Pure 925 Silver</div>
+                    <div className="mb-2 text-blue-700 font-medium">Made With Pure 925 Silver</div>
                     {/* Delivery Time */}
                     <div className="mb-4">
                         <div className="font-semibold text-lg mb-1">Estimated Delivery Time</div>
                         <div className="flex gap-2">
                             <input type="text" value={pincode} onChange={e => setPincode(e.target.value)} placeholder="Enter 6 digit pincode" className="border rounded px-4 py-2 w-64" maxLength={6} />
-                            <button className="bg-pink-200 text-pink-900 px-4 py-2 rounded font-semibold">Check</button>
+                            <button className="bg-blue-200 text-blue-900 px-4 py-2 rounded font-semibold">Check</button>
                         </div>
                     </div>
                     {/* Features */}
@@ -80,33 +80,33 @@ const Page = () => {
                     </div>
                     {/* Gift Option */}
                     <div className="mb-4 flex items-center gap-2">
-                        <input type="checkbox" id="gift" className="accent-pink-400" />
+                        <input type="checkbox" id="gift" className="accent-blue-400" />
                         <label htmlFor="gift" className="text-sm">Is this a Gift? <span role="img" aria-label="gift">🎁</span> Wrap it for just (₹50)</label>
                     </div>
                     {/* Buy/Add Buttons */}
                     <div className="flex gap-4 mb-6">
-                        <button className="bg-pink-400 text-white px-6 py-2 rounded font-semibold hover:bg-pink-500 transition">Buy Now</button>
-                        <button className="bg-pink-400 text-white px-6 py-2 rounded font-semibold hover:bg-pink-500 transition" onClick={() => addToCart(toeRing)}>Add To Cart</button>
+                        <button className="bg-blue-400 text-white px-6 py-2 rounded font-semibold hover:bg-blue-500 transition">Buy Now</button>
+                        <button className="bg-blue-400 text-white px-6 py-2 rounded font-semibold hover:bg-blue-500 transition" onClick={() => addToCart(toeRing)}>Add To Cart</button>
                     </div>
                     {/* Offers */}
-                    <div className="bg-pink-50 rounded-lg p-4 mb-6">
+                    <div className="bg-blue-50 rounded-lg p-4 mb-6">
                         <div className="font-bold mb-2">Offers For You <span className="text-xs text-gray-500">(Can be applied at checkout)</span></div>
                         <div className="flex flex-col gap-2">
                             <div className="bg-white rounded p-2 flex justify-between items-center">FLAT 10% Off on Silver Jewellery above ₹2499 <span>🔖</span></div>
                             <div className="bg-white rounded p-2 flex justify-between items-center">FLAT 15% Off on Silver Jewellery above ₹3499 <span>🔖</span></div>
-                            <button className="text-pink-600 underline text-sm">+3 more offers</button>
+                            <button className="text-blue-600 underline text-sm">+3 more offers</button>
                         </div>
                     </div>
                     {/* Product Description */}
                     <div className="mb-6">
-                        <div className="bg-pink-50 rounded-t-lg p-3 font-bold text-lg">Product Description</div>
-                        <div className="bg-pink-50 rounded-b-lg p-3">
+                        <div className="bg-blue-50 rounded-t-lg p-3 font-bold text-lg">Product Description</div>
+                        <div className="bg-blue-50 rounded-b-lg p-3">
                             <div className="font-semibold mb-1">The Inspiration:</div>
                             <div className="text-gray-700">
                                 {showMore
                                     ? "Flaunt your feet with these adorable heart-shaped toe rings, crafted from pure 925 silver. These will add a touch of elegance to any look. Durable, stylish, and perfect for gifting!"
                                     : "Flaunt your feet with these adorable heart-shaped toe rings, crafted from pure 925 silver. These wil..."}
-                                <button className="text-pink-600 underline ml-2 text-sm" onClick={() => setShowMore(!showMore)}>{showMore ? "Show Less" : "Show More"}</button>
+                                <button className="text-blue-600 underline ml-2 text-sm" onClick={() => setShowMore(!showMore)}>{showMore ? "Show Less" : "Show More"}</button>
                             </div>
                         </div>
                     </div>
@@ -124,7 +124,7 @@ const Page = () => {
                             </div>
                             <div className="text-lg font-bold">₹{item.price}</div>
                             <div className="font-medium text-gray-900 mb-2 text-center">{item.name}</div>
-                            <button className="bg-pink-200 text-pink-900 font-semibold py-2 rounded w-full hover:bg-pink-300 transition">Add to Cart</button>
+                            <button className="bg-blue-200 text-blue-900 font-semibold py-2 rounded w-full hover:bg-blue-300 transition">Add to Cart</button>
                         </div>
                     ))}
                 </div>

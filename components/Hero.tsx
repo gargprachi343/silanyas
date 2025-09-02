@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 const images = [
   '/assets/hero1.png',
   '/assets/hero2.png',
-  '/assets/hero3.png',
 ];
 
 export const Hero = () => {
