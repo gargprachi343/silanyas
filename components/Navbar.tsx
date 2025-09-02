@@ -26,7 +26,7 @@ const Navbar = () => {
       {/* Top banner */}
       <div className="w-full bg-blue-950 p-2 text-white text-center">
         Buy 2 get 10% off – CODE:{" "}
-        <span className="font-bold text-blue-200">RAKHI10</span>
+        <span className="font-bold text-blue-200">NEW10</span>
       </div>
 
       {/* Main navbar */}
