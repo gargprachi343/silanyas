@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import EarringProductCard from "@/components/EarringProductCard";
-import { toerings } from "@/data/toerings";
+import { pendant } from "@/data/pendant";
 import { useCart } from "@/context/CartContext";
 
 export default function ToeRingsPage() {
@@ -36,7 +36,7 @@ export default function ToeRingsPage() {
             <section className="max-w-7xl mx-auto px-4">
                 <h2 className="text-3xl font-bold mb-8 text-center">Our Collection</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-                    {toerings.map((toeRing: {
+                    {pendant.map((toeRing: {
                         id: string;
                         name: string;
                         description: string;
