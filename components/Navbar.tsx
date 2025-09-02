@@ -1,9 +1,13 @@
 "use client";
 
-import { Heart, Search, ShoppingCart, User, ChevronDown } from "lucide-react";
+import { Heart, Search, ShoppingCart, User as UserIcon, ChevronDown } from "lucide-react";
 import Link from "next/link";
+import AccountDropdown from "./AccountDropdown";
+import { onAuthStateChanged } from "firebase/auth";
+import type { User as FirebaseUser } from "firebase/auth";
+import { auth } from "../firebaseClient";
 import { useCart } from "@/context/CartContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
   const { cart, wishlist } = useCart();
@@ -20,6 +24,15 @@ const Navbar = () => {
     "Toe Rings": ["Plain", "Designer", "Adjustable"],
     "Gifting": ["Rakhi", "Festive Specials", "Gift Cards"],
   };
+
+  const [user, setUser] = useState<FirebaseUser | null>(null);
+  // Listen for auth state changes
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      setUser(firebaseUser);
+    });
+    return () => unsubscribe();
+  }, []);
 
   return (
     <div className="sticky top-0 z-50">
@@ -46,10 +59,18 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center justify-end gap-6 text-xs text-black">
-          <div className="flex items-center gap-1 cursor-pointer">
-            <User className="w-5 h-5" /> ACCOUNT
-          </div>
-        
+          {user ? (
+            <AccountDropdown user={{
+              ...user,
+              displayName: user.displayName ?? undefined,
+              email: user.email ?? undefined
+            }} />
+          ) : (
+            <Link href="/signup" className="flex items-center gap-1 cursor-pointer">
+              <UserIcon className="w-5 h-5" /> ACCOUNT
+            </Link>
+          )}
+
           <Link href="/wishlist" className="flex items-center gap-1 cursor-pointer">
             <Heart className="w-5 h-5" /> WISHLIST
             {wishlist.length > 0 && (
