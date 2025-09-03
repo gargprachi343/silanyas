@@ -73,3 +73,5 @@ export default function RingPage() {
         </main>
     );
 }
+
+// Removed duplicate default export
