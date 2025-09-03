@@ -18,7 +18,7 @@ export default function ToeRingsPage() {
                 </Link>
             </nav>
             {/* Banner */}
-            <div className="w-full h-64 relative mb-8">
+            <div className="w-full" style={{ height: "556px", position: "relative", marginBottom: "2rem" }}>
                 <Image
                     src="/assets/banner/ear.png" // Replace with toe rings banner if available
                     alt="Toe Rings Banner"
@@ -27,8 +27,6 @@ export default function ToeRingsPage() {
                     priority
                 />
                 <div className="absolute inset-0 bg-blue-200 bg-opacity-60 flex flex-col justify-center items-center">
-
-
                 </div>
             </div>
 

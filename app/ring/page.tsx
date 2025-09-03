@@ -6,7 +6,7 @@ import EarringProductCard from "@/components/EarringProductCard";
 import { ring } from "../../data/ring";
 import { useCart } from "@/context/CartContext";
 
-export default function ringPage() {
+export default function RingPage() {
     const { addToCart, addToWishlist } = useCart();
 
     return (

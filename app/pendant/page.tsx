@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+
 import EarringProductCard from "@/components/EarringProductCard";
 import { pendant } from "@/data/pendant";
 import { useCart } from "@/context/CartContext";
@@ -13,12 +13,10 @@ export default function PendantPage() {
         <main className="min-h-screen bg-white text-gray-900">
             {/* Navigation Link to Pendants */}
             <nav className="w-full bg-white border-b px-4 py-2 flex justify-center">
-                <Link href="/pendant" className="text-pink-600 font-semibold hover:underline text-lg">
-                    Pendants
-                </Link>
+               
             </nav>
             {/* Banner */}
-            <div className="w-full h-64 relative mb-8">
+            <div className="w-full" style={{ height: "556px", position: "relative", marginBottom: "2rem" }}>
                 <Image
                     src="/assets/pendant1.jpeg" // Replace with pendant banner if available
                     alt="Pendants Banner"
