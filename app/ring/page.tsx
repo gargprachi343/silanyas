@@ -3,30 +3,32 @@
 import Image from "next/image";
 import Link from "next/link";
 import EarringProductCard from "@/components/EarringProductCard";
-import { pendant } from "@/data/pendant";
+import { ring } from "../../data/ring";
 import { useCart } from "@/context/CartContext";
 
-export default function PendantPage() {
+export default function ringPage() {
     const { addToCart, addToWishlist } = useCart();
 
     return (
         <main className="min-h-screen bg-white text-gray-900">
-            {/* Navigation Link to Pendants */}
+            {/* Navigation Link to rings */}
             <nav className="w-full bg-white border-b px-4 py-2 flex justify-center">
-                <Link href="/pendant" className="text-pink-600 font-semibold hover:underline text-lg">
-                    Pendants
+                <Link href="/ring" className="text-blue-600 font-semibold hover:underline text-lg">
+                    rings
                 </Link>
             </nav>
             {/* Banner */}
             <div className="w-full h-64 relative mb-8">
                 <Image
-                    src="/assets/pendant1.jpeg" // Replace with pendant banner if available
-                    alt="Pendants Banner"
+                    src="/assets/banner/ear.png" // Replace with rings banner if available
+                    alt="rings Banner"
                     fill
                     className="object-cover object-top"
                     priority
                 />
-                <div className="absolute inset-0 bg-pink-200 bg-opacity-60 flex flex-col justify-center items-center">
+                <div className="absolute inset-0 bg-blue-200 bg-opacity-60 flex flex-col justify-center items-center">
+
+
                 </div>
             </div>
 
@@ -34,7 +36,7 @@ export default function PendantPage() {
             <section className="max-w-7xl mx-auto px-4">
                 <h2 className="text-3xl font-bold mb-8 text-center">Our Collection</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-                    {pendant.map((item: {
+                    {ring.map((toeRing: {
                         id: string;
                         name: string;
                         description: string;
@@ -43,25 +45,25 @@ export default function PendantPage() {
                         category: string;
                     }) => (
                         <EarringProductCard
-                            key={item.id}
-                            {...item}
-                            slugPrefix="pendant"
+                            key={toeRing.id}
+                            {...toeRing}
+                            slugPrefix="ring"
                             onAddToCart={() =>
                                 addToCart({
-                                    id: item.id,
-                                    name: item.name,
-                                    description: item.description,
-                                    price: item.price,
-                                    imageUrl: item.imageUrl,
+                                    id: toeRing.id,
+                                    name: toeRing.name,
+                                    description: toeRing.description,
+                                    price: toeRing.price,
+                                    imageUrl: toeRing.imageUrl,
                                 })
                             }
                             onAddToWishlist={() =>
                                 addToWishlist({
-                                    id: item.id,
-                                    name: item.name,
-                                    description: item.description,
-                                    price: item.price,
-                                    imageUrl: item.imageUrl,
+                                    id: toeRing.id,
+                                    name: toeRing.name,
+                                    description: toeRing.description,
+                                    price: toeRing.price,
+                                    imageUrl: toeRing.imageUrl,
                                 })
                             }
                         />
