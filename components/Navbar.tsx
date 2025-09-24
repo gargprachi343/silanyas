@@ -21,7 +21,7 @@ const Navbar = () => {
     "Earrings": ["Studs", "Hoops", "Jhumkas", "Danglers"],
     "Necklaces & Pendants": ["Chains", "Lockets", "Hearts"],
     "Rings": ["Solitaire", "Couple Rings", "Adjustable"],
-    "Bracelets & Bangles": ["Silver", "Charm Bracelets", "Cuffs"],
+    // "Bracelets & Bangles": ["Silver", "Charm Bracelets", "Cuffs"],
     "Toe Rings": ["Plain", "Designer", "Adjustable"],
     "Gifting": ["Rakhi", "Festive Specials", "Gift Cards"],
   };

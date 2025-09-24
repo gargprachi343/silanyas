@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { load } from "@cashfreepayments/cashfree-js";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface Product {
   id: string;
@@ -11,14 +11,11 @@ interface Product {
   imageUrl: string;
 }
 
-interface Cashfree {
-  checkout: (options: { paymentSessionId: string; redirectTarget?: string }) => void;
-}
-
 const CartPage = () => {
+  const router = useRouter();
   const [cartItems, setCartItems] = useState<Product[]>([]);
   const [total, setTotal] = useState(0);
-  const [cashfree, setCashfree] = useState<Cashfree | null>(null);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   useEffect(() => {
     const storedCart: Product[] = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -29,35 +26,39 @@ const CartPage = () => {
       0
     );
     setTotal(totalAmount);
-
-    // Load Cashfree SDK
-    load({ mode: "sandbox" }).then((cf) => setCashfree(cf as Cashfree));
   }, []);
 
-  const handleCheckout = async () => {
+  const   handleCheckout = async () => {
     try {
-      // Call backend to create order
-      const res = await fetch("/api/create-order", {
+      setIsProcessing(true);
+      
+      // Call backend to initiate payment
+      const res = await fetch("/api/payment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount: total }),
+        body: JSON.stringify({
+          amount: total,
+          productInfo: `Order for ${cartItems.length} items`,
+          customerName: "Test Customer", // You should get this from user profile
+          customerEmail: "test@example.com", // You should get this from user profile
+          customerPhone: "9999999999" // You should get this from user profile
+        }),
       });
 
       const data = await res.json();
 
-      if (!data.orderToken) {
-        alert("Error creating order");
-        return;
+      if (!data.success || !data.paymentUrl) {
+        throw new Error(data.error || "Failed to initiate payment");
       }
 
-      // Open Cashfree Checkout
-      cashfree?.checkout({
-        paymentSessionId: data.orderToken,
-        redirectTarget: "_self", // stays on same page
-      });
+      // Redirect to PayU payment page
+      window.location.href = data.paymentUrl;
+      
     } catch (error) {
       console.error(error);
-      alert("Checkout failed");
+      alert("Checkout failed. Please try again.");
+    } finally {
+      setIsProcessing(false);
     }
   };
 
@@ -91,9 +92,12 @@ const CartPage = () => {
         <h2 className="text-xl font-bold">Total: ₹{total}</h2>
         <button
           onClick={handleCheckout}
-          className="bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700"
+          disabled={isProcessing}
+          className={`${
+            isProcessing ? 'bg-blue-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'
+          } text-white px-6 py-3 rounded-xl flex items-center gap-2`}
         >
-          Checkout
+          {isProcessing ? 'Processing...' : 'Checkout'}
         </button>
       </div>
     </div>
