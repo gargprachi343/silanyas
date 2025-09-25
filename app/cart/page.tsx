@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 
 interface Product {
   id: string;
@@ -12,7 +12,7 @@ interface Product {
 }
 
 const CartPage = () => {
-  const router = useRouter();
+  // const router = useRouter();
   const [cartItems, setCartItems] = useState<Product[]>([]);
   const [total, setTotal] = useState(0);
   const [isProcessing, setIsProcessing] = useState(false);
