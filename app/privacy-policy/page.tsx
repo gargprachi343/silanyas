@@ -9,7 +9,7 @@ export default function PrivacyPolicy() {
         <section>
           <h2 className="text-2xl font-semibold mb-4">Introduction</h2>
           <p className="text-gray-700">
-            This Privacy Policy describes how Silanyas and its affiliates (collectively "Silanyas, we, our, us") collect, use, share, protect or otherwise process your information/ personal data through our website WWW.SILANYAS.COM (hereinafter referred to as Platform). Please note that you may be able to browse certain sections of the Platform without registering with us. We do not offer any product/service under this Platform outside India and your personal data will primarily be stored and processed in India.
+            This Privacy Policy describes how Silanyas and its affiliates (collectively &quot;Silanyas, we, our, us&quot;) collect, use, share, protect or otherwise process your information/ personal data through our website WWW.SILANYAS.COM (hereinafter referred to as Platform). Please note that you may be able to browse certain sections of the Platform without registering with us. We do not offer any product/service under this Platform outside India and your personal data will primarily be stored and processed in India.
           </p>
         </section>
 

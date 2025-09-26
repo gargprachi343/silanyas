@@ -2,7 +2,7 @@ import { Hero } from "../components/Hero";
 import CategoryScroll from "../components/CategoryScroll";
 import { RakshaBanner } from "../components/RakshaBanner";
 
-import ProductScrollRow from "../components/ProductScrollRow";
+// import ProductScrollRow from "../components/ProductScrollRow";
 import Features from "../components/Features";
 
 import { products } from "../data/products";
