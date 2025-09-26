@@ -17,7 +17,7 @@ export default function Home() {
       <CategoryScroll />
       <RakshaBanner />
       <ProductGrid products={products} />
-      <ProductScrollRow />
+      {/* <ProductScrollRow /> */}
       <Features />
     </main>
   );

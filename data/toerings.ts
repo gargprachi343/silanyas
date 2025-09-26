@@ -28,7 +28,7 @@ export const toerings = [
         name: "Teardrop Shine Toe Ring",
         description: "Trendy oxidized silver toe ring.",
         price: 329,
-        imageUrl: "/assets/toe-4.jpeg",
+        imageUrl: "/assets/toe-3.jpeg",
         category: "toe-rings"
     },
     {

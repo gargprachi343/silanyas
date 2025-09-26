@@ -88,12 +88,12 @@ const Footer = () => (
 
     <div className="mt-10 border-t border-gray-800 pt-6 flex flex-col items-center justify-center text-center gap-4">
       <div className="flex gap-4 text-sm text-gray-400">
-        <Link href="/assets/terms-and-condition.pdf" className="hover:text-blue-200">
+        <Link href="/terms-conditions" className="hover:text-blue-200">
           Terms & Conditions
         </Link>
 
         <span>•</span>
-        <Link href="/assets/privacy.pdf" className="hover:text-blue-200">
+        <Link href="/privacy-policy" className="hover:text-blue-200">
           Privacy Policy
         </Link>
       </div>

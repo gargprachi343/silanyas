@@ -28,7 +28,9 @@ const EarringProductCard: React.FC<EarringProductCardProps> = ({
   onAddToWishlist,
 }): React.ReactElement => {
     
-  const detailLink = `/${slugPrefix || "earrings"}/${id}`;
+  const detailLink = `/${slugPrefix || "new-arrivals"}/${id}`;
+
+console.log(slugPrefix)
   return (
     <div className="border rounded-lg p-4 bg-white shadow relative flex flex-col">
       <div className="relative w-full h-64 mb-2">

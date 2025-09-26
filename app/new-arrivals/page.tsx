@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import EarringProductCard from "@/components/EarringProductCard";
-import { earrings } from "@/data/earrings";
+import { newArrivalsProducts } from "@/data/new-arrivals";
 import { useCart } from "@/context/CartContext";
 
 export default function EarringsPage() {
@@ -29,11 +29,11 @@ export default function EarringsPage() {
       <section className="max-w-7xl mx-auto px-4">
         <h2 className="text-3xl font-bold mb-8 text-center">Our Collection</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          {earrings.map((earring) => (
+          {newArrivalsProducts.map((earring) => (
             <EarringProductCard
               key={earring.id}
               {...earring}
-              slugPrefix="earrings"
+              slugPrefix="new-arrivals"
               onAddToCart={() =>
                 addToCart({
                   id: earring.id,

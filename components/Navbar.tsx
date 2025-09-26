@@ -1,6 +1,12 @@
 "use client";
 
-import { Heart, Search, ShoppingCart, User as UserIcon, ChevronDown } from "lucide-react";
+import {
+  Heart,
+  Search,
+  ShoppingCart,
+  User as UserIcon,
+  ChevronDown,
+} from "lucide-react";
 import Link from "next/link";
 
 import AccountDropdown from "./AccountDropdown";
@@ -16,14 +22,14 @@ const Navbar = () => {
   const [closeTimeout, setCloseTimeout] = useState<NodeJS.Timeout | null>(null);
 
   const menuItems = {
-    "New Arrivals": ["Earrings", "Pendants", "Rings"],
+    "New Arrivals": ["Earrings"],
     // "Best Sellers": ["Top Earrings", "Top Rings"],
-    "Earrings": ["Studs", "Hoops", "Jhumkas", "Danglers"],
+    Earrings: ["Studs"],
     "Necklaces & Pendants": [],
-    "Rings": [],
+    Rings: [],
     // "Bracelets & Bangles": ["Silver", "Charm Bracelets", "Cuffs"],
     "Toe Rings": ["Plain"],
-    "Gifting": ["Rakhi", "Festive Specials", "Gift Cards"],
+    // Gifting: ["Rakhi", "Festive Specials", "Gift      Cards"],
   };
 
   const [user, setUser] = useState<FirebaseUser | null>(null);
@@ -48,7 +54,10 @@ const Navbar = () => {
         <nav className="w-full bg-white border-b px-4 py-3 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
           <div className="flex flex-col lg:flex-row lg:items-center gap-4 w-full">
             {/* Logo on the left */}
-            <Link href="/" className="font-bold text-2xl lg:text-3xl text-blue-900">
+            <Link
+              href="/"
+              className="font-bold text-2xl lg:text-3xl text-blue-900"
+            >
               Silanyas
             </Link>
             <div className="relative w-full max-w-xl mx-auto">
@@ -63,18 +72,26 @@ const Navbar = () => {
 
           <div className="flex items-center justify-end gap-6 text-xs text-black">
             {user ? (
-              <AccountDropdown user={{
-                ...user,
-                displayName: user.displayName ?? undefined,
-                email: user.email ?? undefined
-              }} />
+              <AccountDropdown
+                user={{
+                  ...user,
+                  displayName: user.displayName ?? undefined,
+                  email: user.email ?? undefined,
+                }}
+              />
             ) : (
-              <Link href="/signup" className="flex items-center gap-1 cursor-pointer">
+              <Link
+                href="/signup"
+                className="flex items-center gap-1 cursor-pointer"
+              >
                 <UserIcon className="w-5 h-5" /> ACCOUNT
               </Link>
             )}
 
-            <Link href="/wishlist" className="flex items-center gap-1 cursor-pointer">
+            <Link
+              href="/wishlist"
+              className="flex items-center gap-1 cursor-pointer"
+            >
               <Heart className="w-5 h-5" /> WISHLIST
               {wishlist.length > 0 && (
                 <span className="ml-1 bg-blue-500 text-white rounded-full px-2 text-xs font-bold">
@@ -82,7 +99,10 @@ const Navbar = () => {
                 </span>
               )}
             </Link>
-            <Link href="/cart" className="flex items-center gap-1 cursor-pointer">
+            <Link
+              href="/cart"
+              className="flex items-center gap-1 cursor-pointer"
+            >
               <ShoppingCart className="w-5 h-5" /> CART
               {cart.length > 0 && (
                 <span className="ml-1 bg-orange-500 text-white rounded-full px-2 text-xs font-bold">
@@ -109,10 +129,26 @@ const Navbar = () => {
               >
                 {/* Category Link */}
                 <Link
-                  href={`/${category === "Toe Rings" ? "toerings" : category === "Pendants" ? "pendant" : category === "Necklaces & Pendants" ? "pendant" : category === "ring" ? "rings" : category === "Rings" ? "ring" : category.toLowerCase().replace(/\s+/g, "-")}`}
+                  href={`/${
+                    category === "Toe Rings"
+                      ? "toerings"
+                      : category === "Pendants"
+                      ? "pendant"
+                      : category === "Necklaces & Pendants"
+                      ? "pendant"
+                      : category === "ring"
+                      ? "rings"
+                      : category === "Rings"
+                      ? "ring"
+                      : category.toLowerCase().replace(/\s+/g, "-")
+                  }`}
                   onClick={() => setOpenMenu(isOpen ? null : category)}
                   className={`cursor-pointer flex items-center gap-1 px-2 py-1 rounded transition-colors duration-200
-                  ${isOpen ? "text-blue-600 font-semibold bg-blue-50" : "hover:text-blue-500"}`}
+                  ${
+                    isOpen
+                      ? "text-blue-600 font-semibold bg-blue-50"
+                      : "hover:text-blue-500"
+                  }`}
                 >
                   {category} <ChevronDown className="w-3 h-3" />
                 </Link>
@@ -129,29 +165,39 @@ const Navbar = () => {
                       if (closeTimeout) clearTimeout(closeTimeout);
                     }}
                   >
-                    {menuItems[category as keyof typeof menuItems].map((item) => {
-                      let link;
-                      if (category === "Earrings" && item.toLowerCase() === "studs") {
-                        link = "/earrings/studs";
-                      } else if (item.toLowerCase() === "earrings") {
-                        link = "/earrings";
-                      } else if (category === "Toe Rings") {
-                        link = "/toerings";
-                      } else if (category === "Pendants") {
-                        link = "/pendant";
-                      } else {
-                        link = `/${item.toLowerCase().replace(/\s+/g, "-")}`;
+                    {menuItems[category as keyof typeof menuItems].map(
+                      (item) => {
+                        let link;
+                        if (
+                          category === "Earrings" &&
+                          item.toLowerCase() === "studs"
+                        ) {
+                          link = "/earrings/studs";
+                        } else if (item.toLowerCase() === "earrings") {
+                          link = "/earrings";
+                        } else if (category === "Toe Rings") {
+                          link = "/toerings";
+                        } else if (category === "Pendants") {
+                          link = "/pendant";
+                        } else if(category === "New Arrivals" &&
+                          item.toLowerCase() === "Pendants") {
+                            link = '/pendant'
+
+                        }
+                         else {
+                          link = `/${item.toLowerCase().replace(/\s+/g, "-")}`;
+                        }
+                        return (
+                          <Link
+                            key={item}
+                            href={link}
+                            className="block px-3 py-1 text-gray-700 hover:bg-blue-100 hover:text-blue-600 rounded transition-colors duration-200"
+                          >
+                            {item}
+                          </Link>
+                        );
                       }
-                      return (
-                        <Link
-                          key={item}
-                          href={link}
-                          className="block px-3 py-1 text-gray-700 hover:bg-blue-100 hover:text-blue-600 rounded transition-colors duration-200"
-                        >
-                          {item}
-                        </Link>
-                      );
-                    })}
+                    )}
                   </div>
                 )}
               </div>

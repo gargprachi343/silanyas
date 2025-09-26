@@ -118,7 +118,7 @@ export const studs: StudProduct[] = [
         reviews: 210,
     },
     {
-        id: "stud-12",
+        id: "stud-13",
         name: "Evil Eye Helix Earrings",
         imageUrl: "/assets/stud-13.jpeg",
         price: 1599,
