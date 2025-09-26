@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export const RakshaBanner = () => {
   return (
-    <section className="w-full bg-gradient-to-br from-[#111537] via-[#104087] to-[#2877a8] py-10 px-4 rounded-3xl overflow-hidden">
+    <section className="w-full bg-gradient-to-br from-[#111537] via-[#104087] to-[#2877a8] py-10 px-4 rounded-3xl overflow-hidden mt-8">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8">
         {/* Left Decorative Image */}
         <div className="flex-shrink-0 relative w-[280px] h-[280px] rounded-[50px] overflow-hidden bg-gradient-to-br from-[#def6ff] to-[#c7e8ff] shadow-xl ring-4 ring-[#5187d9]/40">
@@ -41,7 +41,7 @@ export const RakshaBanner = () => {
         {/* Right Side Product Types */}
         <div className="grid grid-cols-2 gap-4 lg:w-1/2">
           {[
-            { title: "Spiritual Rakhis", img: "/assets/rakhis1.jpg" },
+            { title: " Rakhis", img: "/assets/rakhis1.jpg" },
             { title: "Trending Rakhis", img: "/assets/rakhib3.jpg" },
             { title: "Bracelet Rakhis", img: "/assets/rakhib1.jpg" },
             { title: " Gen-Alpha Rakhis", img: "/assets/rakhi4.jpg" },

@@ -50,7 +50,29 @@ export default function PrivacyPolicy() {
             We may share your personal data internally within our group entities, our other corporate entities, and affiliates to provide you access to the services and products offered by them. These entities and affiliates may market to you as a result of such sharing unless you explicitly opt-out. We may disclose personal data to third parties such as sellers, business partners, third party service providers including logistics partners, prepaid payment instrument issuers, third-party reward programs and other payment opted by you.
           </p>
         </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">Return & Refund Policy</h2>
+          <p className="text-gray-700">
+            We use personal data to provide the services you request. To the extent we use your personal data to market to you, we will provide you the ability to opt-out of such uses. We use your personal data to:
+          </p>
+          <ul className="list-disc ml-6 mt-2 text-gray-700">
+            <li>Shipping policy - We will deliver your product within 3-7 days</li>
+            <li>Return - You can initiate for a return within 7 days</li>
+            <li>Refund - Once the refund request is approved, The Refunded Amount will be processed and credited within 10 days to the original mode of payment.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">Contacts</h2>
+          <ul className="list-disc ml-6 mt-2 text-gray-700">
+            <li>Email: silanyas.care@gmail.com</li>
+            <li>Phone no: 8076488458</li>
+            <li>Owner name: Shikha Bansal</li>
+          </ul>
+        </section>
       </div>
     </div>
   );
 }
+
