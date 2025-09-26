@@ -17,12 +17,12 @@ const Navbar = () => {
 
   const menuItems = {
     "New Arrivals": ["Earrings", "Pendants", "Rings"],
-    "Best Sellers": ["Top Earrings", "Top Rings"],
+    // "Best Sellers": ["Top Earrings", "Top Rings"],
     "Earrings": ["Studs", "Hoops", "Jhumkas", "Danglers"],
-    "Necklaces & Pendants": ["Chains", "Lockets", "Hearts"],
-    "Rings": ["Solitaire", "Couple Rings", "Adjustable"],
+    "Necklaces & Pendants": [],
+    "Rings": [],
     // "Bracelets & Bangles": ["Silver", "Charm Bracelets", "Cuffs"],
-    "Toe Rings": ["Plain", "Designer", "Adjustable"],
+    "Toe Rings": ["Plain"],
     "Gifting": ["Rakhi", "Festive Specials", "Gift Cards"],
   };
 
