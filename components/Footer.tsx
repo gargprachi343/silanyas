@@ -13,7 +13,7 @@ const Footer = () => (
       </div>
 
       {/* About Us */}
-      <div>
+      {/* <div>
         <h3 className="text-blue-200 font-semibold mb-2">ABOUT US</h3>
         <ul className="space-y-1 text-sm text-gray-300">
           <li>
@@ -29,10 +29,10 @@ const Footer = () => (
             <a href="#">Press Kit</a>
           </li>
         </ul>
-      </div>
+      </div> */}
 
       {/* Resources */}
-      <div>
+      {/* <div>
         <h3 className="text-blue-200 font-semibold mb-2">RESOURCES</h3>
         <ul className="space-y-1 text-sm text-gray-300">
           <li>
@@ -48,33 +48,55 @@ const Footer = () => (
             <a href="#">FAQ</a>
           </li>
         </ul>
-      </div>
+      </div> */}
 
       {/* Connect */}
       <div>
         <h3 className="text-blue-200 font-semibold mb-2">CONNECT</h3>
         <ul className="space-y-1 text-sm text-gray-300">
           <li>
-            <a href="#">Instagram</a>
+            <a href="https://www.instagram.com/silanyas_official?igsh=MWtwbWpyY212aDd6dA==" target="_blank">Instagram</a>
           </li>
-          <li>
+          {/* <li>
             <a href="#">Twitter</a>
           </li>
           <li>
             <a href="#">LinkedIn</a>
-          </li>
+          </li> */}
         </ul>
         <div className="flex gap-3 mt-4 text-xl text-gray-300">
-          <a href="#">
+          {/* <a href="#">
             <FaTwitter />
-          </a>
-          <a href="#">
+          </a> */}
+          <a href="https://www.instagram.com/silanyas_official?igsh=MWtwbWpyY212aDd6dA==" target="_blank">
             <FaInstagram />
           </a>
-          <a href="#">
+          {/* <a href="#">
             <FaLinkedin />
-          </a>
+          </a> */}
         </div>
+      </div>
+
+      {/* <div className="flex gap-4 text-sm text-gray-400">
+        <Link href="/terms-conditions" className="hover:text-blue-200">
+          Terms & Conditions
+        </Link>
+
+        <span>•</span>
+        <Link href="/privacy-policy" className="hover:text-blue-200">
+          Privacy Policy
+        </Link>
+      </div> */}
+      <div className="flex items-center gap-4 text-sm text-gray-400">
+        <Link href="/terms-conditions" className="hover:text-blue-200">
+          Terms & Conditions
+        </Link>
+
+        <span>•</span>
+
+        <Link href="/privacy-policy" className="hover:text-blue-200">
+          Privacy Policy
+        </Link>
       </div>
     </div>
 
@@ -87,17 +109,6 @@ const Footer = () => (
     </div> */}
 
     <div className="mt-10 border-t border-gray-800 pt-6 flex flex-col items-center justify-center text-center gap-4">
-      <div className="flex gap-4 text-sm text-gray-400">
-        <Link href="/terms-conditions" className="hover:text-blue-200">
-          Terms & Conditions
-        </Link>
-
-        <span>•</span>
-        <Link href="/privacy-policy" className="hover:text-blue-200">
-          Privacy Policy
-        </Link>
-      </div>
-
       <p className="text-sm text-gray-400">
         © 2025 <span className="text-blue-200 font-medium">Silanyas</span>.
         Designed with ❤️ for elegance.
